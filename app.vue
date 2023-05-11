@@ -1,3 +1,10 @@
-<template></template>
+<template>
+	<AppHeader />
+</template>
 
-<script setup></script>
+<style>
+html {
+	font-family: 'Roboto', sans-serif;
+	padding: 30px 147px;
+}
+</style>
