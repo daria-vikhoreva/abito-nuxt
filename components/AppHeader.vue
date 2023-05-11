@@ -16,7 +16,10 @@
 				class="header__auth"
 				:link="authLink"
 			/>
-			<UiButton text="Подать объявление" />
+			<UiButton
+				text="Подать объявление"
+				size="small"
+			/>
 		</div>
 	</div>
 </template>
@@ -29,7 +32,6 @@ const authLink = { name: 'Вход и регистрация', href: '#' };
 .header {
 	display: flex;
 	align-items: center;
-	color: #0a143a;
 	justify-content: space-between;
 }
 
