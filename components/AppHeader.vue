@@ -19,6 +19,7 @@
 			<UiButton
 				text="Подать объявление"
 				size="small"
+				class="header__button"
 			/>
 		</div>
 	</div>
@@ -59,5 +60,26 @@ const authLink = { name: 'Вход и регистрация', href: '#' };
 
 .header__menu {
 	margin-left: 20px;
+}
+
+@media (max-width: 730px) {
+	.header__right-menu {
+		gap: 8px;
+	}
+	.header__menu {
+		margin-left: 10px;
+	}
+}
+
+@media (max-width: 680px) {
+	.header__menu {
+		display: none;
+	}
+}
+
+@media (max-width: 340px) {
+	.header__button {
+		display: none;
+	}
 }
 </style>

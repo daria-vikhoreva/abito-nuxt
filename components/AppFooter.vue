@@ -13,6 +13,7 @@
 				class="footer__link"
 				>Обработка данных</a
 			>
+			<MenuList class="footer__menu" />
 		</div>
 	</footer>
 </template>
@@ -41,5 +42,18 @@ export default {};
 	margin-top: 5px;
 	color: #c4c4c4;
 	display: block;
+}
+
+.footer__menu {
+	display: none;
+}
+
+@media (max-width: 680px) {
+	.footer__menu {
+		display: block;
+		margin-top: 20px;
+		display: flex;
+		flex-direction: column;
+	}
 }
 </style>

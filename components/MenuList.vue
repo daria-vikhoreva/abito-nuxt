@@ -23,4 +23,10 @@ const menu = [
 	display: flex;
 	gap: 14px;
 }
+
+@media (max-width: 730px) {
+	.menu {
+		gap: 8px;
+	}
+}
 </style>
