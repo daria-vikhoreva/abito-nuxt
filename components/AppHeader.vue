@@ -77,7 +77,7 @@ const authLink = { name: 'Вход и регистрация', href: '#' };
 	}
 }
 
-@media (max-width: 340px) {
+@media (max-width: 360px) {
 	.header__button {
 		display: none;
 	}

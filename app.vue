@@ -1,8 +1,6 @@
 <template>
-	<div class="container">
+	<NuxtLayout>
 		<div class="main-page">
-			<AppHeader />
-			<SearchInput class="main-page__search" />
 			<div class="main-page__wrapper">
 				<section class="main-page__recommendation recommendation">
 					<h1 class="recommendation__title">Рекомендации для вас</h1>
@@ -10,27 +8,16 @@
 				</section>
 				<aside class="aside">
 					<ServicesList />
-					<AppFooter />
 				</aside>
 			</div>
 		</div>
-	</div>
+	</NuxtLayout>
 </template>
 
 <style>
 html {
 	font-family: 'Roboto', sans-serif;
 	color: #0a143a;
-}
-.container {
-	max-width: 1146px;
-	margin: 0 auto;
-}
-.main-page {
-	padding: 30px 0;
-}
-.main-page__search {
-	margin-top: 24px;
 }
 .main-page__wrapper {
 	margin-top: 42px;
@@ -51,9 +38,6 @@ html {
 	.main-page {
 		padding: 20px 20px;
 	}
-	.container {
-		max-width: 900px;
-	}
 	.aside {
 		max-width: 250px;
 		width: 100%;
@@ -66,9 +50,6 @@ html {
 @media (max-width: 875px) {
 	.main-page {
 		padding: 15px 15px;
-	}
-	.container {
-		max-width: 850px;
 	}
 	.aside {
 		max-width: 210px;
@@ -99,8 +80,5 @@ html {
 		max-width: 300px;
 		width: 100%;
 	}
-}
-
-@media (max-width: 730px) {
 }
 </style>
