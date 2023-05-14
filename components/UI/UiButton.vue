@@ -1,7 +1,7 @@
 <template>
 	<button
 		class="button"
-		:class="size"
+		:class="[size, color]"
 	>
 		<slot name="left" />
 		{{ text }}
@@ -13,16 +13,17 @@
 interface Props {
 	text: string;
 	size?: 'small' | 'medium' | 'large';
+	color?: 'blue' | 'sea-blue';
 }
 
 withDefaults(defineProps<Props>(), {
 	size: 'large',
+	color: 'blue',
 });
 </script>
 
 <style scoped>
 .button {
-	background: #256eeb;
 	border-radius: 5px;
 	font-size: 14px;
 	line-height: 16px;
@@ -30,6 +31,13 @@ withDefaults(defineProps<Props>(), {
 	border: 0;
 }
 
+.blue {
+	background: #256eeb;
+}
+
+.sea-blue {
+	background: #14b4be;
+}
 .small {
 	padding: 10px 15px;
 }

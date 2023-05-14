@@ -26,7 +26,7 @@
 	}
 }
 
-@media (max-width: 875px) {
+@media (max-width: 900px) {
 	.container {
 		max-width: 850px;
 		padding: 20px 15px;
