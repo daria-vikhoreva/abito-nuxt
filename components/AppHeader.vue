@@ -1,21 +1,26 @@
 <template>
 	<div class="header">
 		<div class="header__left-menu">
-			<div class="header__logo">
+			<NuxtLink
+				to="/"
+				class="header__logo"
+			>
 				<img
 					src="~/assets/box.svg"
 					alt="box"
 					class="logo__img"
 				/>
 				<div class="logo__text">Abito</div>
-			</div>
+			</NuxtLink>
 			<MenuList class="header__menu" />
 		</div>
 		<div class="header__right-menu">
-			<UiLink
+			<NuxtLink
+				to="/login"
 				class="header__auth"
-				:link="authLink"
-			/>
+			>
+				Вход и регистрация</NuxtLink
+			>
 			<UiButton
 				text="Подать объявление"
 				size="small"
@@ -25,9 +30,7 @@
 	</div>
 </template>
 
-<script setup>
-const authLink = { name: 'Вход и регистрация', href: '#' };
-</script>
+<script setup></script>
 
 <style scoped>
 .header {
@@ -60,6 +63,14 @@ const authLink = { name: 'Вход и регистрация', href: '#' };
 
 .header__menu {
 	margin-left: 20px;
+}
+
+.header__logo,
+.header__auth {
+	text-decoration: none;
+	color: #0a143a;
+	font-size: 14px;
+	line-height: 16px;
 }
 
 @media (max-width: 730px) {

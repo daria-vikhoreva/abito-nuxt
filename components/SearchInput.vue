@@ -1,7 +1,7 @@
 <template>
 	<div class="search">
 		<div class="search__wrapper">
-			<UiInput />
+			<UiInput size="medium" />
 		</div>
 		<UiButton
 			text="Найти"
@@ -18,9 +18,7 @@
 	</div>
 </template>
 
-<script>
-export default {};
-</script>
+<script></script>
 
 <style scoped>
 .search {

@@ -44,6 +44,7 @@ withDefaults(defineProps<Props>(), {
 
 .medium {
 	padding: 16px 20px 17px 20px;
+	font-size: 16px;
 }
 
 .large {
