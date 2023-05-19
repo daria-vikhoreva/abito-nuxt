@@ -5,11 +5,7 @@
 				to="/"
 				class="header__logo"
 			>
-				<img
-					src="~/assets/box.svg"
-					alt="box"
-					class="logo__img"
-				/>
+				<BoxLogo class="logo__img" />
 				<div class="logo__text">Abito</div>
 			</NuxtLink>
 			<MenuList class="header__menu" />
@@ -30,7 +26,9 @@
 	</div>
 </template>
 
-<script setup></script>
+<script setup>
+import BoxLogo from '~/assets/box.svg';
+</script>
 
 <style scoped>
 .header {

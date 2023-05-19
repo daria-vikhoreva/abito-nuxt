@@ -1,10 +1,7 @@
 <template>
 	<div class="service">
 		<div class="service__img">
-			<img
-				src="~/assets/delivery.svg"
-				alt="img"
-			/>
+			<DeliveryImg />
 			<div class="service__title">Доставка</div>
 			<div class="service__descr">
 				Проверка при получении и возможность бесплатно вернуть товар
@@ -13,8 +10,8 @@
 	</div>
 </template>
 
-<script>
-export default {};
+<script setup>
+import DeliveryImg from '~/assets/delivery.svg';
 </script>
 
 <style scoped>

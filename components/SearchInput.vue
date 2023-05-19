@@ -9,16 +9,15 @@
 			size="medium"
 		>
 			<template #left>
-				<img
-					src="~/assets/search.svg"
-					alt="search"
-				/>
+				<SearchImg />
 			</template>
 		</UiButton>
 	</div>
 </template>
 
-<script></script>
+<script setup>
+import SearchImg from '~/assets/search.svg';
+</script>
 
 <style scoped>
 .search {
