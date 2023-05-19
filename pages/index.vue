@@ -12,9 +12,7 @@
 	</div>
 </template>
 
-<script>
-export default {};
-</script>
+<script setup></script>
 
 <style scoped>
 .main-page__wrapper {
@@ -29,6 +27,10 @@ export default {};
 .recommendation__title {
 	font-size: 24px;
 	margin: 0;
+}
+
+.main-page__recommendation {
+	width: 100%;
 }
 
 @media (max-width: 1170px) {
