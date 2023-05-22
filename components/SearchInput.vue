@@ -1,7 +1,11 @@
 <template>
 	<div class="search">
 		<div class="search__wrapper">
-			<UiInput size="medium" />
+			<UiInput
+				text="Искать объявления"
+				size="medium"
+				v-model="searchValue"
+			/>
 		</div>
 		<UiButton
 			text="Найти"
@@ -17,6 +21,8 @@
 
 <script setup>
 import SearchImg from '~/assets/search.svg';
+
+const searchValue = ref('');
 </script>
 
 <style scoped>
