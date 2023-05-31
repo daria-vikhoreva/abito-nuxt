@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<UiLoader v-if="loading" />
 		<CardListItem
 			v-for="card in cards"
 			:key="card.id"
@@ -8,12 +9,13 @@
 	</div>
 </template>
 
-<script setup>
-import axios from 'axios';
+<script setup lang="ts">
+import { ICard } from '~/types/adverts';
 
-const results = await axios.get('http://45.132.19.237/adverts');
+interface Props {
+	cards: ICard[];
+	loading: boolean;
+}
 
-const cards = results.data;
+defineProps<Props>();
 </script>
-
-<style scoped></style>

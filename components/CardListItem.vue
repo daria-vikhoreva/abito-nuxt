@@ -1,5 +1,8 @@
 <template>
-	<div class="item">
+	<NuxtLink
+		:to="card.id"
+		class="item"
+	>
 		<img
 			v-if="card.photo"
 			:src="card.photo"
@@ -17,7 +20,7 @@
 			<UiLike
 				class="item__like"
 				:active="isLiked"
-				@click="clickLike"
+				@click.prevent="clickLike"
 			/>
 		</div>
 		<div class="item__price">
@@ -29,18 +32,11 @@
 			</div>
 			<div class="item__date">{{ getDate(card.date) }}</div>
 		</div>
-	</div>
+	</NuxtLink>
 </template>
 
 <script setup lang="ts">
-interface ICard {
-	date: string;
-	id: string;
-	location: string;
-	photo: string;
-	price: number;
-	title: string;
-}
+import { ICard } from '~/types/adverts';
 
 interface Props {
 	card: ICard;
@@ -72,6 +68,7 @@ const getPrice = (value: number) => {
 .item {
 	max-width: 264px;
 	width: 100%;
+	text-decoration: none;
 }
 .item__wrapper {
 	margin-top: 12px;
@@ -94,6 +91,7 @@ const getPrice = (value: number) => {
 	font-weight: 700;
 	font-size: 16px;
 	line-height: 19px;
+	color: #0a143a;
 }
 .item__info {
 	margin-top: 10px;

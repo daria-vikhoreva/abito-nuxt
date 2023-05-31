@@ -29,6 +29,7 @@ withDefaults(defineProps<Props>(), {
 	line-height: 16px;
 	color: #ffffff;
 	border: 0;
+	cursor: pointer;
 }
 
 .blue {

@@ -9,10 +9,6 @@
 	</div>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style scoped>
 .services-list__wrapper {
 	margin-top: 29px;
