@@ -1,36 +1,44 @@
 <template>
 	<div class="detail-page">
-		<div class="detail-card">
+		<UiLoader v-if="loading" />
+		<div
+			v-else
+			class="detail-card"
+		>
 			<div class="detail-card__left-col">
-				<div class="detail-card__title">Электросамокат kugoo Gx</div>
-				<div class="detail-card__img">
-					<img
-						src="~/assets/kugoo.jpg"
-						alt="kugoo"
-					/>
-				</div>
+				<div class="detail-card__title">{{ data.title }}</div>
+				<img
+					:src="data.photos[0]"
+					alt="kugoo"
+					class="detail-card__img"
+				/>
+
 				<div class="detail-card__descr">
-					Продаю не спеша самокат в хорошем состоянии. Торг возможен. За период
-					эксплуатации не выявлено ни одной проблемы. Из минусов — нужно
-					прокачать задний тормоз. Установлен отсекатель сзади. Покрышки CST
-					внедорожные. Все на подшипниках, болты протянуты. Пробег 881км , это
-					немного для такого зверя.
+					{{ data.description }}
 				</div>
 			</div>
 
 			<div class="detail-card__right-col">
-				<div class="detail-card__price">75 000 ₽</div>
+				<div class="detail-card__price">{{ data.price }} ₽</div>
 				<div class="detail-card__author author">
 					<div class="author__info">
-						<div class="author__name">Михаил Воробьев</div>
-						<div class="author__rating">
-							<img
-								src="~/assets/star.svg"
-								alt="star"
-							/>
-							<span>5 отзывов</span>
+						<div class="author__name">
+							{{ data.user.firstName }} {{ data.user.lastName }}
 						</div>
-						<div class="author__status">Частное лицо</div>
+						<div class="author__rating">
+							<div
+								v-for="n in 5"
+								:key="n"
+							>
+								<StarIcon
+									class="star"
+									:style="`color: ${data.user.rating >= n ? 'red' : 'grey'};`"
+								/>
+							</div>
+
+							<span>{{ data.user.reviews.length }} отзывов</span>
+						</div>
+						<div class="author__status">Добавить статус</div>
 					</div>
 
 					<div class="author__img">
@@ -54,8 +62,21 @@
 	</div>
 </template>
 
-<script>
-export default {};
+<script setup>
+import StarIcon from '~/assets/star.svg';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+
+const route = useRoute();
+const data = ref({});
+const loading = ref(true);
+
+axios
+	.get(`http://45.132.19.237/adverts/${route.params.id}`)
+	.then((response) => {
+		loading.value = false;
+		data.value = response.data;
+	});
 </script>
 
 <style scoped>
@@ -78,6 +99,7 @@ export default {};
 
 .detail-card__img {
 	margin-top: 25px;
+	width: 100%;
 }
 
 .detail-card__descr {
@@ -152,5 +174,11 @@ export default {};
 		font-size: 14px;
 		line-height: 140%;
 	}
+}
+
+.star {
+	display: flex;
+	height: 16px;
+	width: 16px;
 }
 </style>
