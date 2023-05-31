@@ -1,0 +1,140 @@
+<template>
+	<div class="wrapper">
+		<h2>Регистрация на сайте</h2>
+		<form
+			class="auth__form"
+			@submit.prevent="postDataRegister"
+		>
+			<UiInput
+				text="Имя"
+				name="firstName"
+				v-model="user.firstName"
+			/>
+			<UiInput
+				text="Фамилия"
+				name="lastName"
+				v-model="user.lastName"
+			/>
+			<UiInput
+				type="email"
+				text="Email"
+				name="email"
+				v-model="user.email"
+			/>
+			<UiInput
+				text="Имя пользователя (логин)"
+				name="username"
+				v-model="user.username"
+			/>
+			<UiInput
+				type="password"
+				text="Пароль"
+				name="password"
+				v-model="user.password"
+			/>
+
+			<label for="personType">Выберите ваш статус:</label>
+			<select
+				class="select"
+				name="personType"
+				v-model="user.personType"
+			>
+				<option
+					value="individual"
+					class="select__option"
+					selected
+				>
+					Частное лицо
+				</option>
+				<option
+					value="corporate"
+					class="select__option"
+				>
+					Компания
+				</option>
+			</select>
+
+			<UiInput
+				text="Ссылка на фотографию профиля"
+				name="photo"
+				v-model="user.photoLink"
+			/>
+
+			<UiButton
+				type="submit"
+				text="Зарегистрироваться"
+				size="small"
+			/>
+		</form>
+
+		<h3 class="auth__info">
+			Есть аккаунт?
+			<NuxtLink
+				to="/login"
+				class="auth__link"
+				>Зайти в существующий аккаунт</NuxtLink
+			>
+		</h3>
+	</div>
+</template>
+
+<script setup>
+import axios from 'axios';
+
+const user = reactive({
+	username: '',
+	password: '',
+	email: '',
+	firstName: '',
+	lastName: '',
+	personType: 'individual',
+	photoLink: '',
+});
+
+const postDataRegister = async () => {
+	const body = {
+		username: user.username,
+		password: user.password,
+		email: user.password,
+		firstName: user.firstName,
+		lastName: user.lastName,
+		personType: user.personType,
+		photoLink: user.photoLink,
+	};
+
+	const result = await axios.post('http://45.132.19.237/register', body);
+
+	console.log(result.data);
+};
+</script>
+
+<style scoped>
+.select {
+	padding: 12px 24px;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.auth__form {
+	margin-top: 24px;
+	max-width: 440px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.auth__info {
+	margin-top: 24px;
+}
+
+.select {
+	padding: 12px 24px;
+	border: 2px solid #256eeb;
+	border-radius: 5px;
+	background-color: #fff;
+}
+</style>
