@@ -3,7 +3,11 @@
 		<div class="main-page__wrapper">
 			<section class="main-page__recommendation recommendation">
 				<h1 class="recommendation__title">Рекомендации для вас</h1>
-				<CardList class="recommendation__list" />
+				<CardList
+					class="recommendation__list"
+					:cards="cards"
+					:loading="loading"
+				/>
 			</section>
 			<aside class="aside">
 				<ServicesList />
@@ -12,11 +16,23 @@
 	</div>
 </template>
 
-<script setup></script>
+<script setup>
+import axios from 'axios';
+
+const loading = ref(true);
+
+const cards = ref([]);
+
+axios.get('http://45.132.19.237/adverts').then((response) => {
+	loading.value = false;
+	cards.value = response.data;
+});
+</script>
 
 <style scoped>
 .main-page__wrapper {
 	display: flex;
+	justify-content: space-between;
 }
 .recommendation__list {
 	margin-top: 25px;
@@ -31,6 +47,10 @@
 
 .main-page__recommendation {
 	width: 100%;
+}
+
+.aside {
+	max-width: 350px;
 }
 
 @media (max-width: 1170px) {
