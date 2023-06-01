@@ -17,11 +17,13 @@
 			>
 				Вход и регистрация</NuxtLink
 			>
-			<UiButton
-				text="Подать объявление"
-				size="small"
-				class="header__button"
-			/>
+			<NuxtLink to="/create-advert">
+				<UiButton
+					text="Подать объявление"
+					size="small"
+					class="header__button"
+				/>
+			</NuxtLink>
 		</div>
 	</div>
 </template>
