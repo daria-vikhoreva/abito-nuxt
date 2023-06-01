@@ -12,10 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { IService } from '~/types/services';
+import { IServices } from '~/types/services';
 
 interface Props {
-	services: IService[];
+	services: IServices;
 }
 
 defineProps<Props>();

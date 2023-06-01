@@ -3,60 +3,66 @@
 		<UiLoader v-if="loading" />
 		<div
 			v-else
-			class="detail-card"
+			class="wrapper"
 		>
-			<div class="detail-card__left-col">
-				<div class="detail-card__title">{{ data.title }}</div>
-				<img
-					:src="data.photos[0]"
-					alt="kugoo"
-					class="detail-card__img"
-				/>
+			<div class="detail-card">
+				<div class="detail-card__left-col">
+					<div class="detail-card__title">{{ data.title }}</div>
+					<img
+						:src="data.photos[0]"
+						alt="kugoo"
+						class="detail-card__img"
+					/>
 
-				<div class="detail-card__descr">
-					{{ data.description }}
+					<div class="detail-card__descr">
+						{{ data.description }}
+					</div>
+				</div>
+
+				<div class="detail-card__right-col">
+					<div class="detail-card__price">{{ getPrice(data.price) }} ₽</div>
+					<div class="detail-card__author author">
+						<div class="author__info">
+							<div class="author__name">
+								{{ data.user.firstName }} {{ data.user.lastName }}
+							</div>
+							<div class="author__rating">
+								<div
+									v-for="n in 5"
+									:key="n"
+								>
+									<StarIcon
+										class="star"
+										:style="`color: ${data.user.rating >= n ? 'red' : 'grey'};`"
+									/>
+								</div>
+
+								<span>{{ data.user.reviews.length }} отзывов</span>
+							</div>
+							<div class="author__status">Добавить статус</div>
+						</div>
+
+						<div class="author__img">
+							<img
+								src="~/assets/author.png"
+								alt="author"
+							/>
+						</div>
+					</div>
+					<UiButton
+						text="Показать телефон"
+						size="large"
+					/>
+					<UiButton
+						text="Написать сообщение"
+						size="large"
+						color="sea-blue"
+					/>
 				</div>
 			</div>
 
-			<div class="detail-card__right-col">
-				<div class="detail-card__price">{{ data.price }} ₽</div>
-				<div class="detail-card__author author">
-					<div class="author__info">
-						<div class="author__name">
-							{{ data.user.firstName }} {{ data.user.lastName }}
-						</div>
-						<div class="author__rating">
-							<div
-								v-for="n in 5"
-								:key="n"
-							>
-								<StarIcon
-									class="star"
-									:style="`color: ${data.user.rating >= n ? 'red' : 'grey'};`"
-								/>
-							</div>
-
-							<span>{{ data.user.reviews.length }} отзывов</span>
-						</div>
-						<div class="author__status">Добавить статус</div>
-					</div>
-
-					<div class="author__img">
-						<img
-							src="~/assets/author.png"
-							alt="author"
-						/>
-					</div>
-				</div>
-				<UiButton
-					text="Показать телефон"
-					size="large"
-				/>
-				<UiButton
-					text="Написать сообщение"
-					size="large"
-					color="sea-blue"
-				/>
+			<div class="aside">
+				<AdsList :ads="ads" />
 			</div>
 		</div>
 	</div>
@@ -70,6 +76,7 @@ import axios from 'axios';
 const route = useRoute();
 const data = ref({});
 const loading = ref(true);
+const ads = ref([]);
 
 axios
 	.get(`http://45.132.19.237/adverts/${route.params.id}`)
@@ -77,9 +84,21 @@ axios
 		loading.value = false;
 		data.value = response.data;
 	});
+
+axios.get('http://45.132.19.237/ads').then((response) => {
+	ads.value = response.data;
+});
+
+const getPrice = (value) => {
+	return value.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+};
 </script>
 
 <style scoped>
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+}
 .detail-card {
 	display: flex;
 	gap: 30px;
@@ -110,6 +129,7 @@ axios
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+	width: 260px;
 }
 
 .author {

@@ -10,10 +10,10 @@
 </template>
 
 <script setup lang="ts">
-import { ICard } from '~/types/adverts';
+import { ICards } from '~/types/cards';
 
 interface Props {
-	cards: ICard[];
+	cards: ICards;
 	loading: boolean;
 }
 

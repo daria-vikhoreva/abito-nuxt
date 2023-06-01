@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { ICard } from '~/types/adverts';
+import { ICard } from '~/types/cards';
 
 interface Props {
 	card: ICard;
