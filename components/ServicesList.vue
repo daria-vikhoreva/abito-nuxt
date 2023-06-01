@@ -2,12 +2,24 @@
 	<div class="services-list">
 		<h2 class="services-list__title">Сервисы и услуги</h2>
 		<div class="services-list__wrapper">
-			<ServicesListItem />
-			<ServicesListItem />
-			<ServicesListItem />
+			<ServicesListItem
+				v-for="service in services"
+				:key="service.id"
+				:service="service"
+			/>
 		</div>
 	</div>
 </template>
+
+<script setup lang="ts">
+import { IService } from '~/types/services';
+
+interface Props {
+	services: IService[];
+}
+
+defineProps<Props>();
+</script>
 
 <style scoped>
 .services-list__wrapper {

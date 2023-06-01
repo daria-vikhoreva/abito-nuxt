@@ -10,7 +10,7 @@
 				/>
 			</section>
 			<aside class="aside">
-				<ServicesList />
+				<ServicesList :services="services" />
 			</aside>
 		</div>
 	</div>
@@ -23,9 +23,15 @@ const loading = ref(true);
 
 const cards = ref([]);
 
+const services = ref([]);
+
 axios.get('http://45.132.19.237/adverts').then((response) => {
 	loading.value = false;
 	cards.value = response.data;
+});
+
+axios.get('http://45.132.19.237/services').then((response) => {
+	services.value = response.data;
 });
 </script>
 

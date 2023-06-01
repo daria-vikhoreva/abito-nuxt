@@ -1,20 +1,31 @@
 <template>
 	<div class="service">
-		<div class="service__img">
-			<DeliveryImg />
-			<div class="service__title">Доставка</div>
-			<div class="service__descr">
-				Проверка при получении и возможность бесплатно вернуть товар
-			</div>
+		<img
+			:src="service.icon"
+			alt="icon"
+			class="service__img"
+		/>
+		<div class="service__title">{{ service.title }}</div>
+		<div class="service__descr">
+			{{ service.description }}
 		</div>
 	</div>
 </template>
 
-<script setup>
-import DeliveryImg from '~/assets/delivery.svg';
+<script setup lang="ts">
+import { IService } from '~/types/services';
+
+interface Props {
+	service: IService;
+}
+
+defineProps<Props>();
 </script>
 
 <style scoped>
+.service__img {
+	width: 34px;
+}
 .service__title {
 	font-weight: 700;
 	font-size: 14px;
