@@ -73,6 +73,10 @@ import StarIcon from '~/assets/star.svg';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 
+definePageMeta({
+	middleware: ['auth'],
+});
+
 const route = useRoute();
 const data = ref({});
 const loading = ref(true);
@@ -90,7 +94,7 @@ axios.get('http://45.132.19.237/ads').then((response) => {
 });
 
 const getPrice = (value) => {
-	return value.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+	return value?.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
 };
 </script>
 
@@ -101,6 +105,7 @@ const getPrice = (value) => {
 }
 .detail-card {
 	display: flex;
+	width: 100%;
 	gap: 30px;
 }
 
