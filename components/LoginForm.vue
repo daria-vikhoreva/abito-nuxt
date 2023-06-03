@@ -38,23 +38,22 @@
 </template>
 
 <script setup>
-import axios from 'axios';
+import { useUserStore } from '~/stores/user';
+import { useRouter } from 'vue-router';
 
 const user = reactive({
 	username: '',
 	password: '',
 });
 
+const router = useRouter();
+const userStore = useUserStore();
+const isAuth = computed(() => userStore.isAuth);
+
 const postDataLogin = async () => {
-	try {
-		const body = {
-			username: user.username,
-			password: user.password,
-		};
-		const result = await axios.post('http://45.132.19.237/login', body);
-		localStorage.setItem('user-token', result.data.accessToken);
-	} catch (error) {
-		console.log(error.response.data);
+	await userStore.postDataLogin(user);
+	if (isAuth) {
+		router.push('/');
 	}
 };
 </script>

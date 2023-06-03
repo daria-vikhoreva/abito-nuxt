@@ -30,4 +30,5 @@ export default defineNuxtConfig({
 	vite: {
 		plugins: [svgLoader()],
 	},
+	modules: ['@pinia/nuxt'],
 });

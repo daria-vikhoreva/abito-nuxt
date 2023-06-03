@@ -48,12 +48,13 @@ const advert = reactive({
 	description: '',
 	price: '',
 	location: '',
-	photos: [],
+	photos: [''],
 });
 
 const postDataAdvert = async () => {
 	try {
 		const body = {
+			accessToken: localStorage.getItem('user-token'),
 			title: advert.title,
 			description: advert.description,
 			price: advert.price,

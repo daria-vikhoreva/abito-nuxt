@@ -80,6 +80,7 @@
 
 <script setup>
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 const user = reactive({
 	username: '',
@@ -91,11 +92,13 @@ const user = reactive({
 	photoLink: '',
 });
 
+const router = useRouter();
+
 const postDataRegister = async () => {
 	const body = {
 		username: user.username,
 		password: user.password,
-		email: user.password,
+		email: user.email,
 		firstName: user.firstName,
 		lastName: user.lastName,
 		personType: user.personType,
@@ -103,6 +106,8 @@ const postDataRegister = async () => {
 	};
 
 	const result = await axios.post('http://45.132.19.237/register', body);
+
+	router.push('/login');
 
 	console.log(result.data);
 };

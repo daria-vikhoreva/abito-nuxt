@@ -12,6 +12,7 @@
 		</div>
 		<div class="header__right-menu">
 			<NuxtLink
+				v-if="!isAuth"
 				to="/login"
 				class="header__auth"
 			>
@@ -24,12 +25,25 @@
 					class="header__button"
 				/>
 			</NuxtLink>
+			<NuxtLink
+				v-if="isAuth"
+				to="/"
+				class="header__profile"
+			>
+				{{ firstName }}
+			</NuxtLink>
 		</div>
 	</div>
 </template>
 
 <script setup>
 import BoxLogo from '~/assets/box.svg';
+import { useUserStore } from '~/stores/user';
+const userStore = useUserStore();
+
+const isAuth = computed(() => userStore.isAuth);
+
+const firstName = computed(() => userStore.user.firstName);
 </script>
 
 <style scoped>
@@ -66,7 +80,8 @@ import BoxLogo from '~/assets/box.svg';
 }
 
 .header__logo,
-.header__auth {
+.header__auth,
+.header__profile {
 	text-decoration: none;
 	color: #0a143a;
 	font-size: 14px;
