@@ -11,12 +11,22 @@
 			<MenuList class="header__menu" />
 		</div>
 		<div class="header__right-menu">
+			<form>
+				<select
+					id="locale-select"
+					v-model="$i18n.locale"
+					class="locale-select"
+				>
+					<option value="ru">ru</option>
+					<option value="en">en</option>
+				</select>
+			</form>
 			<NuxtLink
 				v-if="!isAuth"
 				to="/login"
 				class="header__auth"
 			>
-				Вход и регистрация</NuxtLink
+				{{ $t('Вход и регистрация') }}</NuxtLink
 			>
 			<NuxtLink to="/create-advert">
 				<UiButton
@@ -24,13 +34,6 @@
 					size="small"
 					class="header__button"
 				/>
-			</NuxtLink>
-			<NuxtLink
-				v-if="isAuth"
-				to="/"
-				class="header__profile"
-			>
-				{{ firstName }}
 			</NuxtLink>
 		</div>
 	</div>
@@ -86,6 +89,13 @@ const firstName = computed(() => userStore.user.firstName);
 	color: #0a143a;
 	font-size: 14px;
 	line-height: 16px;
+}
+
+.locale-select {
+	padding: 6px;
+	border-radius: 5px;
+	border: 3px solid #5d97fc;
+	background: transparent;
 }
 
 @media (max-width: 730px) {

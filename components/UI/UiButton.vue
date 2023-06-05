@@ -4,7 +4,7 @@
 		:class="[size, color]"
 	>
 		<slot name="left" />
-		{{ text }}
+		{{ $t(text) }}
 		<slot name="right" />
 	</button>
 </template>

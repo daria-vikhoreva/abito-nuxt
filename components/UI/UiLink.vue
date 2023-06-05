@@ -2,7 +2,7 @@
 	<a
 		:href="link.href"
 		class="link"
-		>{{ link.name }}</a
+		>{{ $t(link.name) }}</a
 	>
 </template>
 

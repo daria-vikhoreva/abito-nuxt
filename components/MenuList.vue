@@ -11,10 +11,10 @@
 
 <script setup>
 const menu = [
-	{ name: 'Авто', href: '#' },
-	{ name: 'Недвижимость', href: '#' },
-	{ name: 'Работа', href: '#' },
-	{ name: 'Услуги', href: '#' },
+	{ name: 'Авто', href: 'example.com' },
+	{ name: 'Недвижимость', href: 'example.com' },
+	{ name: 'Работа', href: 'example.com' },
+	{ name: 'Услуги', href: 'example.com' },
 ];
 </script>
 

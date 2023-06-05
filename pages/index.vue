@@ -2,7 +2,8 @@
 	<div class="main-page">
 		<div class="main-page__wrapper">
 			<section class="main-page__recommendation recommendation">
-				<h1 class="recommendation__title">Рекомендации для вас</h1>
+				<div class="welcome-message">{{ $t('Привет') }}, {{ $t(getName) }}</div>
+				<h1 class="recommendation__title">{{ $t('Рекомендации для Вас') }}</h1>
 				<CardList
 					class="recommendation__list"
 					:cards="cards"
@@ -18,6 +19,11 @@
 
 <script setup>
 import axios from 'axios';
+import { useUserStore } from '~/stores/user';
+
+const store = useUserStore();
+const isAuth = store.isAuth;
+const getName = computed(() => (isAuth ? store.user.firstName : 'Гость'));
 
 const loading = ref(true);
 
@@ -47,12 +53,17 @@ axios.get('http://45.132.19.237/services').then((response) => {
 	flex-wrap: wrap;
 }
 .recommendation__title {
+	margin-top: 20px;
 	font-size: 24px;
-	margin: 0;
 }
 
 .main-page__recommendation {
 	width: 100%;
+}
+
+.welcome-message {
+	font-size: 22px;
+	font-weight: 700;
 }
 
 .aside {

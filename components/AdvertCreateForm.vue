@@ -1,39 +1,39 @@
 <template>
 	<div class="wrapper">
-		<h2>Создать объявление</h2>
+		<h2>{{ $t('Создать объявление') }}</h2>
 
 		<form
 			@submit.prevent="postDataAdvert"
 			class="auth__form"
 		>
 			<UiInput
-				text="Заголовок объявления"
+				:text="$t('Заголовок объявления')"
 				v-model="advert.title"
 			/>
 
 			<UiInput
-				text="Описание объявления"
+				:text="$t('Описание объявления')"
 				v-model="advert.description"
 			/>
 
 			<UiInput
-				text="Цена"
+				:text="$t('Цена')"
 				v-model="advert.price"
 			/>
 
 			<UiInput
-				text="Местоположение"
+				:text="$t('Местоположение')"
 				v-model="advert.location"
 			/>
 
 			<UiInput
-				text="Ссылки на фотографии"
+				:text="$t('Ссылки на фотографии')"
 				v-model="advert.photos[0]"
 			/>
 
 			<UiButton
 				type="submit"
-				text="Создать объявление"
+				:text="$t('Создать')"
 				size="small"
 			/>
 		</form>

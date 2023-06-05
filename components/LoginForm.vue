@@ -1,37 +1,37 @@
 <template>
 	<div class="wrapper">
-		<h2>Вход в аккаунт</h2>
+		<h2>{{ $t('Вход в аккаунт') }}</h2>
 
 		<form
 			@submit.prevent="postDataLogin"
 			class="auth__form"
 		>
 			<UiInput
-				text="Имя пользователя"
+				:text="$t('Имя пользователя')"
 				id="username"
 				v-model="user.username"
 			/>
 
 			<UiInput
 				type="password"
-				text="Пароль"
+				:text="$t('Пароль')"
 				id="password"
 				v-model="user.password"
 			/>
 
 			<UiButton
 				type="submit"
-				text="Войти"
+				:text="$t('Войти')"
 				size="small"
 			/>
 		</form>
 
 		<h3 class="auth__info">
-			Нет аккаунта?
+			{{ $t('Нет аккаунта?') }}
 			<NuxtLink
 				to="/register"
 				class="auth__link"
-				>Зарегистрировать новый аккаунт</NuxtLink
+				>{{ $t('Зарегистрировать новый аккаунт') }}</NuxtLink
 			>
 		</h3>
 	</div>

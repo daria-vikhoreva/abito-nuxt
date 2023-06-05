@@ -1,17 +1,17 @@
 <template>
 	<div class="wrapper">
-		<h2>Регистрация на сайте</h2>
+		<h2>{{ $t('Регистрация на сайте') }}</h2>
 		<form
 			class="auth__form"
 			@submit.prevent="postDataRegister"
 		>
 			<UiInput
-				text="Имя"
+				:text="$t('Имя')"
 				name="firstName"
 				v-model="user.firstName"
 			/>
 			<UiInput
-				text="Фамилия"
+				:text="$t('Фамилия')"
 				name="lastName"
 				v-model="user.lastName"
 			/>
@@ -22,18 +22,18 @@
 				v-model="user.email"
 			/>
 			<UiInput
-				text="Имя пользователя (логин)"
+				:text="$t('Имя пользователя (логин)')"
 				name="username"
 				v-model="user.username"
 			/>
 			<UiInput
 				type="password"
-				text="Пароль"
+				:text="$t('Пароль')"
 				name="password"
 				v-model="user.password"
 			/>
 
-			<label for="personType">Выберите ваш статус:</label>
+			<label for="personType">{{ $t('Выберите ваш статус') }}</label>
 			<select
 				class="select"
 				name="personType"
@@ -44,35 +44,35 @@
 					class="select__option"
 					selected
 				>
-					Частное лицо
+					{{ $t('Частное лицо') }}
 				</option>
 				<option
 					value="corporate"
 					class="select__option"
 				>
-					Компания
+					{{ $t('Компания') }}
 				</option>
 			</select>
 
 			<UiInput
-				text="Ссылка на фотографию профиля"
+				:text="$t('Ссылка на фотографию профиля')"
 				name="photo"
 				v-model="user.photoLink"
 			/>
 
 			<UiButton
 				type="submit"
-				text="Зарегистрироваться"
+				:text="$t('Зарегистрироваться')"
 				size="small"
 			/>
 		</form>
 
 		<h3 class="auth__info">
-			Есть аккаунт?
+			{{ $t('Есть аккаунт?') }}
 			<NuxtLink
 				to="/login"
 				class="auth__link"
-				>Зайти в существующий аккаунт</NuxtLink
+				>{{ $t('Зайти в существующий аккаунт') }}</NuxtLink
 			>
 		</h3>
 	</div>

@@ -3,7 +3,7 @@
 		:type="type"
 		class="input"
 		:class="size"
-		:placeholder="text"
+		:placeholder="$t(text)"
 		:value="modelValue"
 		@input="
 			$emit('update:modelValue', ($event.target as HTMLInputElement).value)

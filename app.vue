@@ -10,6 +10,6 @@ html {
 	color: #0a143a;
 }
 .main-content {
-	padding: 42px 0;
+	padding: 35px 0;
 }
 </style>

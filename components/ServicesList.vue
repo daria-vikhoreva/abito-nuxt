@@ -1,6 +1,6 @@
 <template>
 	<div class="services-list">
-		<h2 class="services-list__title">Сервисы и услуги</h2>
+		<h2 class="services-list__title">{{ $t('Сервисы и услуги') }}</h2>
 		<div class="services-list__wrapper">
 			<ServicesListItem
 				v-for="service in services"

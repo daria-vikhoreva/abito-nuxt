@@ -5,9 +5,9 @@
 			alt="icon"
 			class="service__img"
 		/>
-		<div class="service__title">{{ service.title }}</div>
+		<div class="service__title">{{ $t(service.title) }}</div>
 		<div class="service__descr">
-			{{ service.description }}
+			{{ $t(service.description) }}
 		</div>
 	</div>
 </template>
