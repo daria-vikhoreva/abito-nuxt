@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import axios from 'axios';
+import axios from '@/api/axios';
 
 const advert = reactive({
 	title: '',
@@ -61,7 +61,7 @@ const postDataAdvert = async () => {
 			location: advert.location,
 			photos: advert.photos,
 		};
-		const result = await axios.post('http://45.132.19.237/adverts', body);
+		const result = await axios.post('adverts', body);
 	} catch (error) {
 		console.log(error.response.data);
 	}
