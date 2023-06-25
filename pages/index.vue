@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import axios from 'axios';
+import axios from '@/api/axios';
 import { useUserStore } from '~/stores/user';
 
 const store = useUserStore();
@@ -31,12 +31,12 @@ const cards = ref([]);
 
 const services = ref([]);
 
-axios.get('http://45.132.19.237/adverts').then((response) => {
+axios.get('adverts').then((response) => {
 	loading.value = false;
 	cards.value = response.data;
 });
 
-axios.get('http://45.132.19.237/services').then((response) => {
+axios.get('services').then((response) => {
 	services.value = response.data;
 });
 </script>

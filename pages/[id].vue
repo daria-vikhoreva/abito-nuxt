@@ -71,7 +71,7 @@
 <script setup>
 import StarIcon from '~/assets/star.svg';
 import { useRoute } from 'vue-router';
-import axios from 'axios';
+import axios from '@/api/axios';
 
 definePageMeta({
 	middleware: ['auth'],
@@ -83,13 +83,13 @@ const loading = ref(true);
 const ads = ref([]);
 
 axios
-	.get(`http://45.132.19.237/adverts/${route.params.id}`)
+	.get(`adverts/${route.params.id}`)
 	.then((response) => {
 		loading.value = false;
 		data.value = response.data;
 	});
 
-axios.get('http://45.132.19.237/ads').then((response) => {
+axios.get('ads').then((response) => {
 	ads.value = response.data;
 });
 

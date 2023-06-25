@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
+import axios from '@/api/axios';
+
 
 export const useUserStore = defineStore('user', () => {
 	const user = reactive({
@@ -32,7 +34,7 @@ export const useUserStore = defineStore('user', () => {
 			};
 			loading.value = true;
 			isAuth.value = false;
-			const result = await axios.post('http://45.132.19.237/login', body);
+			const result = await axios.post('login', body);
 			localStorage.setItem('user-token', result.data.accessToken);
 
 			user.id = result.data.id;
